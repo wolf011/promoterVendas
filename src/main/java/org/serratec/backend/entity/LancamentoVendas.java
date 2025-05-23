@@ -1,6 +1,8 @@
 package org.serratec.backend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
@@ -16,10 +18,12 @@ public class LancamentoVendas {
     @CreationTimestamp
     private LocalDateTime dataVenda;
 
+    @Positive
     private BigDecimal valorVenda;
 
     @ManyToOne
     @JoinColumn(name = "id_vendedor")
+    @NotBlank
     private Vendedor vendedor;
 
     public Long getIdVenda() {

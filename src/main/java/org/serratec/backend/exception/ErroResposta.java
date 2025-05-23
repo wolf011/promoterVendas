@@ -8,12 +8,28 @@ public class ErroResposta {
     private String titulo;
     private LocalDateTime dataHora;
     private List<String> erros;
+    private String erro;
 
     public ErroResposta(Integer status, String titulo, LocalDateTime dataHora, List<String> erros) {
         this.status = status;
         this.titulo = titulo;
         this.dataHora = dataHora;
         this.erros = erros;
+    }
+
+    public ErroResposta(Integer status, String titulo, LocalDateTime dataHora, String erro) {
+        this.status = status;
+        this.titulo = titulo;
+        this.dataHora = dataHora;
+        this.erro = erro;
+    }
+
+    public String getErro() {
+        return erro;
+    }
+
+    public void setErro(String erro) {
+        this.erro = erro;
     }
 
     public Integer getStatus() {

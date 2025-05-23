@@ -1,7 +1,6 @@
 package org.serratec.backend.coontroller;
 
 import jakarta.validation.Valid;
-import org.serratec.backend.dto.LancamentoVendasRequestDTO;
 import org.serratec.backend.dto.LancamentoVendasResponseDTO;
 import org.serratec.backend.entity.LancamentoVendas;
 import org.serratec.backend.service.LancamentoVendasService;
@@ -33,7 +32,7 @@ public class LancamentoVendasController {
 
     @PostMapping("/inserir")
     @ResponseStatus(HttpStatus.CREATED)
-    public LancamentoVendasResponseDTO inserirLancamento(@Valid @RequestBody LancamentoVendas lancamento) { //######ERRRROOOO
+    public LancamentoVendasResponseDTO inserirLancamento(@Valid @RequestBody LancamentoVendas lancamento) {
         return service.inserirLancamento(lancamento);
     }
 

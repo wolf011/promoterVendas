@@ -1,6 +1,7 @@
 package org.serratec.backend.exception;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -29,9 +30,13 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
         return super.handleExceptionInternal(ex, erroResposta, headers, status, request);
     }
 
-    @ExceptionHandler(VendedorException.class)
-    protected ResponseEntity<Object> handleUsuarioException(VendedorException ex) {
-        return ResponseEntity.badRequest().body(ex.getMessage());
+
+    @ExceptionHandler(LancamentoVendasException.class)
+    protected ResponseEntity<Object> handleNotFoundDataException(LancamentoVendasException ex) {
+        ErroResposta erroResposta = new ErroResposta(HttpStatus.NOT_FOUND.value(), "Dados não encontrados:", LocalDateTime.now(),ex.getMessage());
+        return new ResponseEntity<>(erroResposta,HttpStatus.NOT_FOUND);
     }
+
+
 
 }

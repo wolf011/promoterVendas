@@ -20,8 +20,6 @@ public class LancamentoVendasService {
     @Autowired
     private LancamentoVendasRepository repository;
 
-//    ## EM CONTRUCAO
-
     @PersistenceContext
     private EntityManager entityManager;
 

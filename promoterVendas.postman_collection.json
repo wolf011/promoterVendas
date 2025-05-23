@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "5950a849-2496-48fa-92db-ed47766bd64e",
+		"name": "promoterVendas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "44891887",
+		"_collection_link": "https://hugobraga-8239018.postman.co/workspace/api-2025-1~09206aca-44f2-4c37-ad3f-235fd381dc40/collection/44891887-5950a849-2496-48fa-92db-ed47766bd64e?action=share&source=collection_link&creator=44891887"
+	},
+	"item": [
+		{
+			"name": "Exibir Lancamento por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/lancamentos/listar/5"
+			},
+			"response": []
+		},
+		{
+			"name": "Exibir Lancamentos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/lancamentos/listar"
+			},
+			"response": []
+		},
+		{
+			"name": "Inserir Lancamentos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valorVenda\":6000,\r\n    \"vendedor\":{\r\n        \"idVendedor\": 1000000000000000\r\n    }\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/lancamentos/inserir"
+			},
+			"response": []
+		}
+	]
+}
