@@ -33,8 +33,8 @@ public class LancamentoVendasController {
 
     @PostMapping("/inserir")
     @ResponseStatus(HttpStatus.CREATED)
-    public LancamentoVendasResponseDTO inserirLancamento(@Valid @RequestBody LancamentoVendas lancamentosDTO) { //######ERRRROOOO
-        return service.inserirLancamento(lancamentosDTO);
+    public LancamentoVendasResponseDTO inserirLancamento(@Valid @RequestBody LancamentoVendas lancamento) { //######ERRRROOOO
+        return service.inserirLancamento(lancamento);
     }
 
 }

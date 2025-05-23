@@ -1,5 +1,7 @@
 package org.serratec.backend.service;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.serratec.backend.dto.LancamentoVendasResponseDTO;
 import org.serratec.backend.entity.LancamentoVendas;
 import org.serratec.backend.entity.Vendedor;
@@ -19,16 +21,19 @@ public class LancamentoVendasService {
     private LancamentoVendasRepository repository;
 
 //    ## EM CONTRUCAO
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
     public LancamentoVendasResponseDTO inserirLancamento(LancamentoVendas lancamento) {
-//        Optional<LancamentoVendas> lances = repository.findById(lancamento.getIdVenda());
-//        Optional<Vendedor> vendedor = repository.findById(lancamento.getVendedor().getIdVendedor());
-//        if (lances.isPresent()) {
-//            throw new LancamentoVendasException("Venda já existe");
-//        }
+        Vendedor vendedor = entityManager.find(Vendedor.class, lancamento.getVendedor().getIdVendedor());
+        if (vendedor == null) {
+            throw new LancamentoVendasException("Vendedor não encontrado");
+        }
         LancamentoVendas lancamentoEntity = new LancamentoVendas();
         lancamentoEntity.setDataVenda(lancamento.getDataVenda());
         lancamentoEntity.setValorVenda(lancamento.getValorVenda());
-        lancamentoEntity.getVendedor().setNome(lancamento.getVendedor().getNome());
+        lancamentoEntity.setVendedor(vendedor);
         lancamentoEntity = repository.save(lancamentoEntity);
 
         return new LancamentoVendasResponseDTO(lancamentoEntity.getDataVenda(),
