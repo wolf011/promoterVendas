@@ -1,6 +1,7 @@
 package org.serratec.backend.coontroller;
 
 import jakarta.validation.Valid;
+import org.serratec.backend.dto.LancamentoVendasRequestDTO;
 import org.serratec.backend.dto.LancamentoVendasResponseDTO;
 import org.serratec.backend.entity.LancamentoVendas;
 import org.serratec.backend.service.LancamentoVendasService;
@@ -23,10 +24,17 @@ public class LancamentoVendasController {
         return ResponseEntity.ok(service.listar());
     }
 
+
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<LancamentoVendasResponseDTO> listarPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(service.listarPorId(id));
+    }
+
+
     @PostMapping("/inserir")
     @ResponseStatus(HttpStatus.CREATED)
-    public LancamentoVendasResponseDTO inserir(@Valid @RequestBody LancamentoVendas lancamentosDTO) {
-        return service.inserir(lancamentosDTO);
+    public LancamentoVendasResponseDTO inserirLancamento(@Valid @RequestBody LancamentoVendas lancamentosDTO) { //######ERRRROOOO
+        return service.inserirLancamento(lancamentosDTO);
     }
 
 }

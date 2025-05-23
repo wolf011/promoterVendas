@@ -3,17 +3,18 @@ package org.serratec.backend.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-//@MappedSuperclass
-public abstract class Vendedor {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Vendedor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long idVendedor;
 
+    @NotBlank()
     protected String nome;
     
     @Email(message = "Email inválido")
@@ -21,6 +22,9 @@ public abstract class Vendedor {
     
     @DecimalMin(value = "1518.00")
     protected BigDecimal salario;
+
+    public Vendedor() {
+    }
 
     public Long getIdVendedor() {
         return idVendedor;
